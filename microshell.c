@@ -45,7 +45,10 @@ void dataInit(t_data *data, char *av)
 
 int cheakNext(t_data *d)
 {
-	return 0;
+	while (d->cmd[d->end] && d->cmd[d->end] != '|' && d->cmd[d->end] != ';')
+		d->end++;
+	d->next = d->cmd[d->end - 1];
+	return 1;
 }
 
 void execute(t_data *d)
